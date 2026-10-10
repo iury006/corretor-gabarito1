@@ -5,7 +5,7 @@ package.domain = org.iury
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas
 version = 0.1
-requirements = python3,kivy==2.2.1,opencv
+requirements = python3,kivy==2.2.1,pillow
 orientation = portrait
 fullscreen = 0
 android.permissions = CAMERA, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
