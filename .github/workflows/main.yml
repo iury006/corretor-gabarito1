@@ -13,8 +13,8 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build APK with Buildozer Action
-        uses: Artemis-Skade/buildozer-action@v1.2.0
+      - name: Build APK with Buildozer
+        uses: diging/buildozer-action@v1.2.0
         with:
           command: buildozer -v android debug
           buildozer_version: master
