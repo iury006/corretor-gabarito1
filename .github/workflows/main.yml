@@ -28,11 +28,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install buildozer cython==0.29.33
 
-      - name: Build APK with Buildozer
+      - name: Pre-accept Android SDK Licenses & Build
         run: |
           export BUILDOZER_WARN_ON_ROOT=0
           mkdir -p ~/.android
           touch ~/.android/repositories.cfg
+          
+          # Força a aceitação automática de todas as licenças do SDK/NDK
+          mkdir -p ~/.buildozer/android/platform/android-sdk/licenses
+          echo -e "24333f8a637b3744d16eb72603ec6b746b4e193d\n89330722845350411010090501ecf36f27fe146f\nd56f5187479451eabf01fb78af6dfcb131a6481e" > ~/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+          echo -e "84831b9402116da56f5650320e008961e356e7d6\n601007377800fe8230d29214e210a272610b9d6d" > ~/.buildozer/android/platform/android-sdk/licenses/android-googletv-license
+          echo -e "33b622e747107a0b76a8152d931709fe08942173" > ~/.buildozer/android/platform/android-sdk/licenses/mips-android-sysimage-license
+
           yes | buildozer -v android debug
 
       - name: Upload APK Artifact
